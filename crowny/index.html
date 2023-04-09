@@ -1,227 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialD"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
-    <style></style>
-</head>
-<body class="bg-slate-00 dark:bg-slate-900 ">
-    <div>
-        <!--Navigation starts here-->
-        <nav class="bg-white shadow-lg">
-            <div class="mx-auto">
-                <div class="flex justify-between py-2 px-4">
-                    <div class="flex items-center space-x-2 font-bold text-gray-500 text-4xl">
-                        <img class="w-16 h-16 " src="./assets/crown-removebg-preview.png" alt="logo">
-                        <p class="mt-4">Crow<span class="text-red-600">ny</span><span class="text-gray-600 text-xl "> Dashboard</span></p>
-                    </div>
+    <script src="https://kit.fontawesome.com/d2c72d916d.js" crossorigin="anonymous"></script>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Popins", sans-serif;
+    }
+    .container{
+        height: 100vh;
+        background-image: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)), url(./assets/bg1.jpeg);
+    }
 
-                    <div class="hidden md:flex flex space-x-4">
-                        <div class="hidden md:flex flex mt-2 pt-2">
-                            <input type="text" class="lg:w-96  sm:w-48 bg-gray-100 rounded-xl px-1 focus:outline-none h-3/4 " placeholder="search">
-                        </div>
-                    </div>
+    .form-box{
+        width: 90%;
+        max-width: 450px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 500px;
+        background: #fff;
+        padding: 50px 60px 70px;
+        border-radius: 10px;
+        box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    }
 
-                    <ul class="flex space-x-4 py-1 lg:text-sm font-bold text-slate-600 items-center">
-                        <li>Features</li>
-                        <li>Pricing</li>
-                        <li>Sign In</li>
-                        <li class="text-slate-500 ">or</li>
-                        <li class="text-white bg-green-400 py-1 px-2 rounded-md hover:bg-green-400">Sign Up</li>
-                        <li>
-                            <button id="btnAdd" class="flex justify-center items-center h-10 w-10 rounded-md bg-teal-500 p-5 text-4xl text-center p-auto">+</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    .form-box h1{
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 60px;
+        color: #3c00a0;
+        position: relative;
+    }
 
-            <!--Mobile view goes here..-->
-            <button class="p-1 mr-5 ml-1 rounded-md md:hidden focus:outline-none  focus:shadow-outline-purple mobile-menu-button" 
-                @click="toggleSideMenu" aria-label="Menu">
+    .form-box h1::after{
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        border-radius: 3px;
+        background: #3c00a0;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .form-box .input-group{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    .form-box .input-group .input-field{
+        background: #eaeaea;
+        margin: 15px 0;
+        border-radius: 3px;
+        display: flex;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    input{
+        width: 100%;          
+        border: 0;
+        outline: 0;
+        background: transparent;
+        padding: 18px 15 px;
+        font-size: 16px;
+        color: #3c00a0;
+        font-weight: 500;
+        border-radius: 3px;
+       
+    }
+    .input-field{
+        background: #eaeaea;
+        margin: 15px 0;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        max-height: 65px;
+        transition: max-height 0.5s;
+        overflow: hidden;
+    }
+    .input-field i{
+        font-size: 20px;
+        color: #999;
+        margin-left: 15px;
+    }
+
+    form p{
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    form p a{
+        color: #3c00a0;
+        text-decoration: none;
+    }
+
+    .btn-field{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-field button{
+        flex-basis: 48%;
+        background: #3c00a0;
+        color:#fff;
+        height:40px;
+        border-radius: 20px;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        transition: background 1s;
+    }
+
+    .input-group{
+        height: 280px;
+    }
+
+    .btn-field button.disable{
+        background: #eaeaea;
+        color:#555;
+    }
+
+      #form {
+        width: 200px;
+        transform: translate(0, 300);
+        transition: 1s width ease-in-out;
+      }
+
+      #form:hover {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-00 dark:bg-slate-900">
+    <div class="container max-w-screen-2xl relative ">
+      <!--Navigation starts here-->
+      <nav class="bg-white shadow-lg">
+        <div class="mx-auto">
+          <div class="flex justify-between py-2 px-4">
+            <div
+              class="flex items-center space-x-2 font-bold text-gray-500 text-4xl"
             >
-                <svg class="h-6 w-6" fill="currentColor" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"></path>
-                  </svg>
-            </button>
-        </nav>
-
-        <div class="hidden mobile-menu">
-            <ul class="font-bold text-slate-600 items-center">
-                <li class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3">Features</li>
-                <li class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3">Pricing</li>
-                <li class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3">Sign In</li>
-                <li class="block text-md px-2 py-4 text-slate-400">or</li>
-                <li class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3">Sign Up</li>
-            </ul>
-        </div>
-
-        <!--Sidear-->
-        <div class="flex">
-        <div class="z-20 flex-shrink-0 h-screen hidden w-64 overflow-y-auto bg-slate-800 md:block">
-            
-            <div class="bg-slate-900 h-20 w-64 py-3 px-5">
-                <div class="flex space-x-4 bg-green-400 p-1 rounded-md h-12 w-12 ">
-                <img src="./assets/room.jpg" alt="room" class="flex rounded-md ">
-                    
-                <div class="flex flex-col">
-                    <h3 class="text-white font-bold uppercase text-base">Manager</h3>
-                    <h4 class="text-white text-light">JI</h4>
-                </div>
+              <img
+                class="w-16 h-16"
+                src="./assets/crown-removebg-preview.png"
+                alt="logo"
+              />
+              <p class="mt-4">
+                Crow<span class="text-red-600">ny</span
+                ><span class="text-gray-600 text-xl"> Dashboard</span>
+              </p>
             </div>
+
+            <div class="hidden md:flex flex space-x-4">
+              <div class="hidden md:flex flex mt-2 pt-2">
+                <input
+                  type="text"
+                  class="lg:w-96 sm:w-48 bg-gray-100 rounded-xl px-1 focus:outline-none h-3/4"
+                  placeholder="search"
+                />
+              </div>
+            </div>
+
+            <ul
+              class="flex space-x-4 py-1 lg:text-sm font-bold text-slate-600 items-center"
+            >
+              <li>Features</li>
+              <li>Pricing</li>
+              <li>Sign In</li>
+              <li class="text-slate-500">or</li>
+              <li
+                class="text-white bg-green-400 py-1 px-2 rounded-md hover:bg-green-400"
+              >
+                Sign Up
+              </li>
+              <li>
+                <button onclick="increaseRoom()"
+                  id="btnAdd"
+                  class="flex justify-center items-center h-10 w-10 rounded-md bg-teal-500 p-5 text-4xl text-center p-auto"
+                >
+                  +
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="flex flex-col px-4 py-4 text-gray-400 text-md space-y-3 font-medium">
+        <!--Mobile view goes here..-->
+        <button
+          class="p-1 mr-5 ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple mobile-menu-button"
+          @click="toggleSideMenu"
+          aria-label="Menu"
+        >
+          >
+          <svg
+            class="h-6 w-6"
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+            ></path>
+          </svg>
+        </button>
+      </nav>
+
+      <div class="hidden mobile-menu">
+        <ul class="font-bold text-slate-600 items-center">
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Features
+          </li>
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Pricing
+          </li>
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Sign In
+          </li>
+          <li class="block text-md px-2 py-4 text-slate-400">or</li>
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Sign Up
+          </li>
+        </ul>
+      </div>
+
+      <!-- Metrics -->
+      <div
+        id="topMetric"
+        class="hidden w-full h-20 flex justify-start bg-slate-500 p-5"
+      ></div>
+
+      <!--Sidear-->
+      <div class="flex">
+        <div
+          class="z-20 flex-shrink-0 h-screen hidden w-64 overflow-y-auto bg-slate-800 md:block"
+        >
+          <div class="bg-slate-900 h-20 w-64 py-3 px-5">
+            <div class="flex space-x-4 bg-green-400 p-1 rounded-md h-12 w-12">
+              <img
+                src="./assets/ifeanyi1.jpg"
+                alt="room"
+                class="flex rounded-md"
+              />
+
+              <div class="flex flex-col">
+                <h3 class="text-white font-bold uppercase text-base">
+                  Manager
+                </h3>
+                <h4
+                  class="text-white font-bold text-center border-2 border-white border-solid p-1 rounded-full w-1/2"
+                id="init">
+                  JI
+                </h4>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col px-4 py-4 text-gray-400 text-md space-y-3 font-medium"
+          >
             <a href="#" class="flex">
-                <a href="#" class="u]ercase text-gray-700">Demos</a>
-               <div class="flex space-x-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"></path>
-                  </svg>
-                <a href="#" class="flex hover-text-gray-200 space-x-2 pt-1">Admin</a>
-               </div>
-               <div class="flex space-x-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"></path>
-                  </svg>
-                  <a href="#" class="flex hover-text-gray-200 space-x-2 pt-0.5" id="rooms">Rooms</a>
-               </div>
-                
-               <div class="flex space-x-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"></path>
-                  </svg>
-                  <a href="#" class="flex hover-text-gray-200 space-x-2 pt-0.5" id="reserve">Reservations</a>
-               </div>
-               <div class="flex space-x-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"></path>
-                  </svg>
-                  <a href="#" class="flex hover-text-gray-200 space-x-2 pt-0.5" id="book">Booked</a>
-               </div>
-               <div class="flex space-x-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path>
-                  </svg>
-                  <a href="#" class="flex hover-text-gray-200 space-x-2 pt-0.5">Staff</a>
-               </div>
+              <a href="#" class="uppercase text-gray-700">Demos</a>
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
+                  ></path>
+                </svg>
+                <a href="#" class="flex hover-text-gray-200 space-x-2 pt-1"
+                  >Admin</a
+                >
+              </div>
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="rooms"
+                  >Rooms</a
+                >
+              </div>
+
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="available"
+                  >Available</a
+                >
+              </div>
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="book"
+                  >Booked</a
+                >
+              </div>
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="staff"
+                  >Staff</a
+                >
+              </div>
             </a>
 
             <!-- <a href="#">Demos 2</a> -->
 
             <a href="#" class="flex">
-                <a href="#" class="u]ercase text-gray-700">Demos</a>
-                <a href="#" class="flex hover-text-gray-200 space-x-2">Buttons</a>
-                <a href="#" class="flex hover-text-gray-200 space-x-2">Alerts</a>
-                <a href="#" class="flex hover-text-gray-200 space-x-2">
-                    <span>Models</span>
-                </a>
-                <a href="#" class="flex hover-text-gray-200 space-x-2">
-                    <span>Charts</span>
-                </a>
-                <a href="#" class="flex hover-text-gray-200 space-x-2">
-                    <span>Forms</span>
-                </a>
+              <a href="#" class="u]ercase text-gray-700">Demos</a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">Buttons</a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">Alerts</a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">
+                <span>Models</span>
+              </a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">
+                <span>Charts</span>
+              </a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">
+                <span>Forms</span>
+              </a>
             </a>
-        </div>
+          </div>
         </div>
         <!--Content-->
 
-        <div class="bg-slate-200 h-screen w-full overflow-y-auto" >
-             <div class="p-8 "id="img">
-                <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8" id="board">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <!-- <div id="img">
+        <div class="bg-slate-200 h-screen w-full overflow-y-auto pt-8">
+          <div class="p-8" id="img">
+            <div
+              class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8"
+              id="board"
+            >
+              <div
+                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+              >
+                <div class="w-3/5 flex justify-start">
+                  <!-- <div id="img">
 
                             </div> -->
-                            <ul>
-                                <li class="font-bold text-gray-400">Todays Money</li>
-                                <li class="font-extrabold text-slate-800 text-xl">$53000</li>
-                                <li><span class="text-green-400 font-bold">+34</span><span class="text-gray-400">Since Yesterday</span></li>
-                                <li>Todays Money</li>
-                            </ul>
-                        </div>
-
-                        <div class="w-2/5 flex justify-end">
-                            <div class="bg-indigo-500 rounded-full p-2">
-                                svg
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Todays Money</li>
-                                <li class="font-extrabold text-slate-800 text-xl">$53000</li>
-                                <li><span class="text-green-400 font-bold">+34</span><span class="text-gray-400">Since Yesterday</span></li>
-                                <li>Todays Money</li>
-                            </ul>
-                        </div>
-
-                        <div class="w-2/5 flex justify-end">
-                            <div class="bg-green-500 rounded-full p-2">
-                                svg
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Todays Money</li>
-                                <li class="font-extrabold text-slate-800 text-xl">$53000</li>
-                                <li><span class="text-green-400 font-bold">+34</span><span class="text-gray-400">Since Yesterday</span></li>
-                                <li>Todays Money</li>
-                            </ul>
-                        </div>
-
-                        <div class="w-2/5 flex justify-end">
-                            <div class="bg-rose-500 rounded-full p-2">
-                                svg
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Todays Money</li>
-                                <li class="font-extrabold text-slate-800 text-xl">$53000</li>
-                                <li><span class="text-green-400 font-bold">+34</span><span class="text-gray-400">Since Yesterday</span></li>
-                                <li>Todays Money</li>
-                            </ul>
-                        </div>
-
-                        <div class="w-2/5 flex justify-end">
-                            <div class="bg-slate-500 rounded-full p-2">
-                                svg
-                            </div>
-                        </div>
-                    </div>
-
+                  <ul>
+                    <li class="font-bold text-gray-400">Todays Money</li>
+                    <li class="font-extrabold text-slate-800 text-xl">
+                      $53000
+                    </li>
+                    <li>
+                      <span class="text-green-400 font-bold">+34</span
+                      ><span class="text-gray-400">Since Yesterday</span>
+                    </li>
+                    <li>Todays Money</li>
+                  </ul>
                 </div>
+
+                <div class="w-2/5 flex justify-end">
+                  <div class="bg-indigo-500 rounded-full p-2">svg</div>
+                </div>
+              </div>
+
+              <div
+                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+              >
+                <div class="w-3/5 flex justify-start">
+                  <ul>
+                    <li class="font-bold text-gray-400">Todays Money</li>
+                    <li class="font-extrabold text-slate-800 text-xl">
+                      $53000
+                    </li>
+                    <li>
+                      <span class="text-green-400 font-bold">+34</span
+                      ><span class="text-gray-400">Since Yesterday</span>
+                    </li>
+                    <li>Todays Money</li>
+                  </ul>
+                </div>
+
+                <div class="w-2/5 flex justify-end">
+                  <div class="bg-green-500 rounded-full p-2">svg</div>
+                </div>
+              </div>
+
+              <div
+                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+              >
+                <div class="w-3/5 flex justify-start">
+                  <ul>
+                    <li class="font-bold text-gray-400">Todays Money</li>
+                    <li class="font-extrabold text-slate-800 text-xl">
+                      $53000
+                    </li>
+                    <li>
+                      <span class="text-green-400 font-bold">+34</span
+                      ><span class="text-gray-400">Since Yesterday</span>
+                    </li>
+                    <li>Todays Money</li>
+                  </ul>
+                </div>
+
+                <div class="w-2/5 flex justify-end">
+                  <div class="bg-rose-500 rounded-full p-2">svg</div>
+                </div>
+              </div>
+
+              <div
+                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+              >
+                <div class="w-3/5 flex justify-start">
+                  <ul>
+                    <li class="font-bold text-gray-400">Todays Money</li>
+                    <li class="font-extrabold text-slate-800 text-xl">
+                      $53000
+                    </li>
+                    <li>
+                      <span class="text-green-400 font-bold">+34</span
+                      ><span class="text-gray-400">Since Yesterday</span>
+                    </li>
+                    <li>Todays Money</li>
+                  </ul>
+                </div>
+
+                <div class="w-2/5 flex justify-end">
+                  <div class="bg-slate-500 rounded-full p-2">svg</div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Footer -->
+      <!-- Footer -->
 
-    <div class="pt-5 flex justify-center">
-        <p class="text-gray-400">Designed by IFEANYI OKOLI </p>
-    </div>
-        <!-- <aside class="bg-slate-300 w-80 border-r-2 p-5 h-full">
+      <div class="pt-5 flex justify-center">
+        <p class="text-gray-400">Designed by IFEANYI OKOLI</p>
+      </div>
+      <!-- <aside class="bg-slate-300 w-80 border-r-2 p-5 h-full">
             <div class="flex space-x-1 mb-6 text-4xl font-bold">
                 <img class="w-16 h-16 " src="./assets/crown-removebg-preview.png" alt="logo">
                 <p>Crow<span class="text-red-600">ny</span></p>
@@ -256,37 +572,149 @@
         <header>
 
         </header> -->
+
+      <form
+        id="form"
+        class="transition-all translate-y-10 duration-300 top-14 border-2 absolute hidden p-5 w-80 bg-slate-100 z-20 border-red-500"
+      >
+        <div class="w-full mx-5 p-5">
+          <label for="title" class="text-lg">Room Name</label>
+          <input
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="title"
+            placeholder="Room Name"
+          />
+        </div>
+        <div>
+          <label for="title">Description</label>
+          <input
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="textarea"
+            name="desc"
+            placeholder="Description"
+          />
+        </div>
+        <div>
+          <label for="title">Booked</label>
+          <input
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:none"
+            type="checkbox"
+            name="booked"
+          />
+        </div>
+        <div>
+          <label for="title">Due Date</label>
+          <input
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-slate-800"
+            type="date"
+            name="date"
+          />
+        </div>
+        <div class="w-full mx-5 p-5">
+          <input
+            id="formAdd"
+            class="rounded-xl p-5 border-2 border-blue-500"
+            type="submit"
+            name="title"
+            value="create room"
+          />
+        </div>
+      </form>
+    <section id="topMetricBar" class="grid gap-0 space-x-0 justify-items-center items-center text-start hidden w-full ml-0 pl-20 absolute top-20 mb-4">
+      <div class="flex inline-flex w-3/4  justify-center ml-0 pl-2">
+        <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
+          <p id="totalNumber" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">Total Rooms</p>
+          <p id="total" class=" bg-teal-600 rounded-2xl p-2">00</p>
+        </div>
+        <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
+          <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">Available Rooms</p>
+          <p id="availableRooms" class=" bg-red-600 rounded-2xl p-2">00</p>
+        </div>
+        <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
+          <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">Booked Rooms</p>
+          <p id="bookedRooms" class=" bg-green-600 rounded-2xl p-2">00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Log in page -->
+
+    <!-- <div class="container w-full bg-center bg-cover flex justify-center items-center relative"> -->
+        <div class="form-box -pt-8 absolute text-center z-40" id="login">
+            <h1 id="title">Sign Up</h1>
+            <form class="-mt-6 -pt-4">
+                <div class="input-group">
+                    <div class="input-field space-x-4" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name" id="name" required>
+                    </div>
+                    
+                    <div class="input-field space-x-4">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="surname.firstname@crowny.com" id="email">
+                    </div>
+                    
+                    <div class="input-field space-x-4">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <p>Lost Password <a href="#">Click Here</a></p>
+                </div>
+                
+                <div class="btn-field -pt-2">
+                    <button type="button" id="signupbtn">Sign Up</button>
+                    <button type="button" class="disable" id="signinbtn">Sign In</button>
+                </div>
+            </form>
+        </div>
+    <!-- </div> -->
     </div>
 
-    <form action="" class="absolute hidden p-5 w-80 bg-slate-100">
-        <div class="w-full mx-5 p-5">
-            <label for="title"></label>
-            <input class="rounded-xl p-5 border-2 border-blue-500" type="text" name="title">
-        </div>
-        <div>
-            <label for="title"></label>
-            <input class="rounded-xl p-5 border-2 border-blue-500" type="text" name="title">
-        </div>
-        <div>
-        <label for="title"></label>
-            <input class="rounded-xl p-5 border-2 border-blue-500" type="text" name="title"></div>
-        <div>
-        <label for="title"></label>
-            <input class="rounded-xl p-5 border-2 border-blue-500" type="text" name="title"></div>
-        <div class="w-full mx-5 p-5">
-            <label for="title"></label>
-            <input class="rounded-xl p-5 border-2 border-blue-500" type="text" name="title">
-        </div>
-    </form>
-
     <script>
-        const btn = document.querySelector("button.mobile-menu-button");
-        const menu = document.querySelector(".mobile-menu");
+      const btn = document.querySelector("button.mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
 
-        btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-        });
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      let signUpBtn = document.getElementById("signupbtn");
+      let signInBtn = document.getElementById("signinbtn");
+      let nameField = document.getElementById("nameField");
+      let title = document.getElementById("title");
+      let name = document.getElementById("name");
+      let email = document.getElementById("email");
+      let login = document.getElementById("login");
+      let init = document.getElementById("init");
+
+
+      signInBtn.onclick = function(){         
+          nameField.style.maxHeight = "0";
+          title.innerHTML = "Sign In";
+          signUpBtn.classList.add("disable");
+          signInBtn.classList.remove("disable");
+      }
+
+      signUpBtn.onclick = function(){
+          nameField.style.maxHeight = "60px";
+          title.innerHTML = "Sign Up";
+          signUpBtn.classList.remove("disable");
+          signInBtn.classList.add("disable");
+      }
+
+      signInBtn.ondblclick = function(){      
+        if(email){
+          alert("you are signed in!");
+          login.style.maxHeight = "0";
+          login.classList.toggle("hidden")
+          init.innerText = ((email.value).match(/\b(\w)/g)).splice(0,2).join(" ").toUpperCase();
+        }   
+        
+    }
     </script>
     <script src="./main.js"></script>
-</body>
+  </body>
 </html>

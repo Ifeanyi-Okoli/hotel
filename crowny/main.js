@@ -1,55 +1,84 @@
+const fs = require("fs");
 var rooms = [
   {
     name: "A101",
-    id: 0001,
-    type: "single",
+    // id: 0001,
+    // type: "single",
     booked: true,
     desc: "Man has to rest; all work and no play makes Rust a blunt dude",
     image: "./assets/rm1.jpeg",
-    size: "200 Square Feet",
-    price: "$100 per night",
+    // size: "200 Square Feet",
+    // price: "$100 per night",
   },
   {
     name: "B201",
-    id: 0002,
-    type: "Double",
+    // id: 0002,
+    // type: "Double",
     booked: false,
     desc: "Man has to rest; all work and no play makes Rust a blunt dude",
     image: "./assets/rm2.jpeg",
-    size: "200 Square Feet",
-    price: "$100 per night",
+    // size: "200 Square Feet",
+    // price: "$100 per night",
   },
   {
     name: "E301",
-    id: 0003,
-    type: "Executive",
+    // id: 0003,
+    // type: "Executive",
     booked: true,
     desc: "Man has to rest; all work and no play makes Rust a blunt dude",
     image: "./assets/rm3.jpeg",
-    size: "200 Square Feet",
-    price: "$100 per night",
+    // size: "200 Square Feet",
+    // price: "$100 per night",
   },
   {
     name: "B201",
-    id: 0002,
-    type: "Double",
+    // id: 0002,
+    // type: "Double",
     booked: false,
     desc: "Man has to rest; all work and no play makes Rust a blunt dude",
     image: "./assets/rm4.jpeg",
-    size: "200 Square Feet",
-    price: "$120 per night",
+    // size: "200 Square Feet",
+    // price: "$120 per night",
   },
 ];
 
+const jsonContent  = JSON.stringify(alphabet);
+fs.writeFile("./alphabet.json", jsonContent, "utf-8", (err) =>{
+  if (err){
+    return console.log(err)
+  }
+  console.log("This file was saved!");
+});
+
+
 var board = document.getElementById("board");
 const btnAdd = document.getElementById("btnAdd");
-
+const availableBtn = document.getElementById("available");
 const roomAdd = document.getElementById("rooms");
 const book = document.getElementById("book");
 
+const form = document.getElementById("form");
+const formAdd = document.getElementById("formAdd");
+
+const total = document.getElementById("total");
+// const done = document.getElementByid("done");
+const available = document.getElementById("availableRooms");
+const bkdRooms = document.getElementById("bookedRooms");
+
+// const increaseRoom = document.getElementById("increaseRoom");
+
+const clearBoard = () => {
+    while (board.hasChildNodes()) {
+      board.removeChild(board.firstChild);
+    }
+  };
+
+
+
+
 roomAdd.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("Rooms");
+//   console.log("Rooms");
   clearBoard();
   createRoom(rooms);
 });
@@ -61,9 +90,63 @@ book.addEventListener("click", (e) => {
   createRoom(bookedRoom);
 });
 
+availableBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  clearBoard();
+  var availBtn = rooms.filter((room) => room.booked === false);
+  createRoom(availBtn);
+});
 
+// btnAdd.addEventListener("click", (e)=>{
+    // e.preventDefault();
+    // form.className.replace("hidden", "block")
+    // form.style.display = form.style.display==="none" ? "block" : "none";
+// })
 
+formAdd.addEventListener("click", (e)=>{
+    e.preventDefault();
+    var data = new FormData(form)
+    var title = data.get("title")
+    var desc = data.get("desc")
+    var booked = data.get("booked")
+    var date = data.get("date")
 
+    if(title && desc){
+        var room = {name: title, desc: desc, booked:complete(booked), dueDate:date }
+        rooms.push(room);
+        form.classList.replace("border-red-500", "border-slate-200")
+    }else{
+        form.classList +="border-red-500"
+    }
+    clearBoard();
+    createRoom(rooms);
+
+    updateMetrics();
+    showMetricBar();
+    alert(title, desc, booked, date)
+})
+
+const complete=(v)=>{
+    return v===null  ? false : true;
+}
+
+const updateMetrics = ()=>{
+   var totalRooms = rooms.length;
+   var bookedRooms = rooms.filter((room)=>room.booked===true).length;
+   var availableRooms = Math.abs(totalRooms - bookedRooms);
+
+   total.innerText = totalRooms;
+   bkdRooms.innerText = bookedRooms;
+   available.innerText = availableRooms;
+}
+
+const showMetricBar=()=>{
+    if(rooms.length > 1){
+        topMetricBar.classList.replace("hidden", "block")
+    }else{
+        topMetricBar.classList.replace("block", "hidden")
+    }
+}
 
 const createRoom = (rooms) => {
   for (let room of rooms) {
@@ -82,6 +165,10 @@ const createRoom = (rooms) => {
     var img = document.createElement("img");
     img.src = room.image;
     document.body.appendChild(img);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.innerText = "+";
+    closeBtn.className = "text-center text-2xl text-slate-700";
 
     const list = document.createElement("ul");
 
@@ -117,6 +204,7 @@ const createRoom = (rooms) => {
     list.appendChild(l4);
 
     roomDiv.appendChild(img);
+    roomDiv.appendChild(closeBtn);
 
     subDiv.appendChild(list);
     roomDiv.appendChild(imgDiv);
@@ -127,8 +215,29 @@ const createRoom = (rooms) => {
   }
 };
 
-const clearBoard = () => {
-  while (board.hasChildNodes()) {
-    board.removeChild(board.firstChild);
-  }
-};
+// const addTask = () =>{
+//     e.preventDefault();
+//     rooms.push(room);
+//     clearBoard();
+//     createTask(rooms);
+// }
+
+const increaseRoom = () =>{
+    // e.preventDefault();
+    // rooms.push({
+    //     name: "A101",
+    //     // id: 0001,
+    //     // type: "single",
+    //     booked: true,
+    //     desc: "Man has to rest; all work and no play makes Rust a blunt dude",
+    //     image: "./assets/rm1.jpeg",
+    //     // size: "200 Square Feet",
+    //     // price: "$100 per night",
+    //   });
+    //   clearBoard();
+    //   createRoom(rooms);
+
+   
+    // form.className.replace("hidden", "block")
+    form.style.display = form.style.display==="none" ? "block" : "none";
+}
