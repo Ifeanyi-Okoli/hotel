@@ -1,4 +1,4 @@
-const fs = require("fs");
+// const fs = require("fs");
 var rooms = [
   {
     name: "A101",
@@ -42,13 +42,13 @@ var rooms = [
   },
 ];
 
-const jsonContent  = JSON.stringify(alphabet);
-fs.writeFile("./alphabet.json", jsonContent, "utf-8", (err) =>{
-  if (err){
-    return console.log(err)
-  }
-  console.log("This file was saved!");
-});
+// const jsonContent  = JSON.stringify(rooms);
+// fs.writeFile("./alphabet.json", jsonContent, "utf-8", (err) =>{
+//   if (err){
+//     return console.log(err)
+//   }
+//   console.log("This file was saved!");
+// });
 
 
 var board = document.getElementById("board");

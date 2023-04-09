@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Crowny Hotel</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialD"> -->
     <link
       rel="stylesheet"
@@ -176,8 +176,8 @@
 
             <div class="hidden md:flex flex space-x-4">
               <div class="hidden md:flex flex mt-2 pt-2">
-                <input
-                  type="text"
+                <input onkeyup="filter()" id="search"
+                  type="search"
                   class="lg:w-96 sm:w-48 bg-gray-100 rounded-xl px-1 focus:outline-none h-3/4"
                   placeholder="search"
                 />
@@ -280,12 +280,12 @@
 
               <div class="flex flex-col">
                 <h3 class="text-white font-bold uppercase text-base">
-                  Manager
+                  Welcome
                 </h3>
                 <h4
                   class="text-white font-bold text-center border-2 border-white border-solid p-1 rounded-full w-1/2"
                 id="init">
-                  JI
+                  XX
                 </h4>
               </div>
             </div>
@@ -713,6 +713,22 @@
           init.innerText = ((email.value).match(/\b(\w)/g)).splice(0,2).join(" ").toUpperCase();
         }   
         
+    }
+
+    function filter (){
+      var FilterValue, input, board, li, i;
+      input = document.getElementById("search");
+      FilterValue = input.value.toUpperCase();
+      board = document.getElementById("board");
+      li = document.getElementsByTagName("li");
+      for (i=0; i <li.length; i++){
+        let a = li[i];
+        if(a.innerHTML.toUpperCase().indexOf(FilterValue) > -1){
+          li[i].style.display = "";
+        }else{
+          li[i].style.display = "none";
+        }
+      }
     }
     </script>
     <script src="./main.js"></script>
