@@ -431,10 +431,11 @@
         </div>
         <!--Content-->
 
-        <div class="bg-slate-200 h-screen w-full overflow-y-auto pt-8">
+        <div id="main" onmouseover=changeImage() class="bg-slate-200 h-screen w-full overflow-y-auto pt-8">
           <div class="p-8" id="img">
+          </div>
             <div
-              class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8"
+              class="grid grid-cols-1 md:cols-2 lg:grid-cols-2 gap-4 lg:gap-8"
               id="board"
             >
               <div
@@ -528,7 +529,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          
         </div>
       </div>
 
@@ -537,46 +538,13 @@
       <div class="pt-5 flex justify-center">
         <p class="text-gray-400">Designed by IFEANYI OKOLI</p>
       </div>
-      <!-- <aside class="bg-slate-300 w-80 border-r-2 p-5 h-full">
-            <div class="flex space-x-1 mb-6 text-4xl font-bold">
-                <img class="w-16 h-16 " src="./assets/crown-removebg-preview.png" alt="logo">
-                <p>Crow<span class="text-red-600">ny</span></p>
-            </div>
-            <div class="flex space-x-1 justify-left items-center text-2xl cursor-pointer border-b-2 border-white mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"></path>
-                  </svg>
-                <p>Rooms</p>
-            </div>
-            <div class="flex space-x-1 justify-left items-center text-2xl cursor-pointer border-b-2 border-white mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"></path>
-                  </svg>
-                <p>Reservations</p>
-            </div>
-            <div class="flex space-x-1 justify-left items-center text-2xl cursor-pointer border-b-2 border-white mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
-                  </svg>
-                <p>Available Rooms</p>
-            </div>
-            <div class="flex space-x-1 justify-left items-center text-2xl cursor-pointer border-b-2 border-white mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
-                  </svg>
-                <p>Booked Rooms</p>
-            </div>
-            <p id="todo" class="text-lg cursor-pointer border-b-2 border-white p-2">To Do</p>
-            <p id="completed"  class="text-lg cursor-pointer border-b-2 border-white p-2">Completed</p>
-        </aside>
-        <header>
-
-        </header> -->
-
+   
+    <!-- Creating the form for getting user input to create or add rooms to the list of rooms -->
       <form
         id="form"
         class="transition-all translate-y-10 duration-300 top-14 border-2 absolute hidden p-5 w-80 bg-slate-100 z-20 border-red-500"
       >
+      <!-- Room name field -->
         <div class="w-full mx-5 p-5">
           <label for="title" class="text-lg">Room Name</label>
           <input
@@ -587,16 +555,40 @@
             placeholder="Room Name"
           />
         </div>
+<!-- Room type Field -->
+        <div class="w-full mx-5 p-5">
+          <label for="title" class="text-lg">Room Type</label>
+          <input
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="type"
+            placeholder="Room Type"
+          />
+        </div>
+<!-- Price field -->
+        <div class="w-full mx-5 p-5">
+          <label for="title" class="text-lg">Price</label>
+          <input
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="price"
+            placeholder="$"
+          />
+        </div>
+<!-- Description field -->
         <div>
           <label for="title">Description</label>
           <input
             class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
             maxlength="50"
-            type="textarea"
+            type="text"
             name="desc"
             placeholder="Description"
           />
         </div>
+<!-- Booked status field -->
         <div>
           <label for="title">Booked</label>
           <input
@@ -605,6 +597,7 @@
             name="booked"
           />
         </div>
+        <!-- Date Field -->
         <div>
           <label for="title">Due Date</label>
           <input
@@ -613,6 +606,7 @@
             name="date"
           />
         </div>
+        <!-- Submit element for the form -->
         <div class="w-full mx-5 p-5">
           <input
             id="formAdd"
@@ -623,6 +617,8 @@
           />
         </div>
       </form>
+
+      <!-- Creating the metrics panel for available, booked and total rooms -->
     <section id="topMetricBar" class="grid gap-0 space-x-0 justify-items-center items-center text-start hidden w-full ml-0 pl-20 absolute top-20 mb-4">
       <div class="flex inline-flex w-3/4  justify-center ml-0 pl-2">
         <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
@@ -642,46 +638,64 @@
 
     <!-- Log in page -->
 
-    <!-- <div class="container w-full bg-center bg-cover flex justify-center items-center relative"> -->
-        <div class="form-box -pt-8 absolute text-center z-40" id="login">
-            <h1 id="title">Sign Up</h1>
-            <form class="-mt-6 -pt-4">
-                <div class="input-group">
-                    <div class="input-field space-x-4" id="nameField">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Name" id="name" required>
-                    </div>
-                    
-                    <div class="input-field space-x-4">
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type="email" placeholder="surname.firstname@crowny.com" id="email">
-                    </div>
-                    
-                    <div class="input-field space-x-4">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Password">
-                    </div>
-                    <p>Lost Password <a href="#">Click Here</a></p>
-                </div>
-                
-                <div class="btn-field -pt-2">
-                    <button type="button" id="signupbtn">Sign Up</button>
-                    <button type="button" class="disable" id="signinbtn">Sign In</button>
-                </div>
-            </form>
-        </div>
-    <!-- </div> -->
+   
     </div>
 
+    <div class="container max-w-screen-2xl h-screen bg-center bg-cover flex justify-center items-center absolute bg-[url(./assets/bg2.jpeg)] top-0 bottom-0 left-0 right-0 z-20" id="login" >
+      <img src="#" alt="" class="w-full h-full flex" id="imgLogin">
+      <div class="form-box -pt-8 absolute text-center z-40">
+          <h1 id="title">Sign Up</h1>
+          <form class="-mt-6 -pt-4">
+              <div class="input-group">
+                  <div class="input-field space-x-4" id="nameField">
+                      <i class="fa-solid fa-user"></i>
+                      <input type="text" placeholder="Name" id="name" required>
+                  </div>
+                  
+                  <div class="input-field space-x-4">
+                      <i class="fa-solid fa-envelope"></i>
+                      <input type="email" placeholder="surname.firstname@crowny.com" id="email">
+                  </div>
+                  
+                  <div class="input-field space-x-4">
+                      <i class="fa-solid fa-lock"></i>
+                      <input type="password" placeholder="Password">
+                  </div>
+                  <p>Lost Password <a href="#">Click Here</a></p>
+              </div>
+              
+              <div class="btn-field -pt-2">
+                  <button type="button" id="signupbtn">Sign Up</button>
+                  <button type="button" class="disable" id="signinbtn">Sign In</button>
+              </div>
+          </form>
+      </div>
+  </div>
+
+    <!-- JavaScript  -->
     <script>
       const btn = document.querySelector("button.mobile-menu-button");
       const menu = document.querySelector(".mobile-menu");
+      var main = document.getElementById("main");
+      var bgImage = ["./assets/bg1.jpeg", "./assets/bg2.jpeg", "./assets/bg3.jpeg", "./assets/bg4.jpeg", "./assets/bg5.jpeg"];
+
+      function changeImage(){
+        let displayImg = document.getElementById("main");
+        
+        if(displayImg.src.match("./assets/bg1.jpeg")){
+            document.getElementById("img1").src = "./assets/bg2.jpeg";
+        }
+        else{
+            document.getElementById("img1").src = "./assets/bg1.jpeg";
+        }
+    }
+
 
       btn.addEventListener("click", () => {
         menu.classList.toggle("hidden");
       });
 
-      let signUpBtn = document.getElementById("signupbtn");
+      let signUpBtn = document.getElementById("signupbtn"); //from line #
       let signInBtn = document.getElementById("signinbtn");
       let nameField = document.getElementById("nameField");
       let title = document.getElementById("title");
@@ -711,11 +725,24 @@
           login.style.maxHeight = "0";
           login.classList.toggle("hidden")
           init.innerText = ((email.value).match(/\b(\w)/g)).splice(0,2).join(" ").toUpperCase();
-        }   
-        
+        }           
+    }
+let bgImage2 = ["./assets/bg1.jpeg", "./assets/bg2.jpeg", "./assets/bg3.jpeg", "./assets/bg4.jpeg", "./assets/bg5.jpeg", "./assets/bg6.jpeg", "./assets/bg7.jpg", "./assets/bg8.jpg", "./assets/bg9.jpg", "./assets/bg10.jpeg"];
+
+let displayImg = document.getElementById("imgLogin");
+    displayImg.onmouseover = function (){
+      
+      let i = 0;
+      setInterval(function(){
+        displayImg.src = bgImage2[i];
+        i++;
+        if(i == bgImage2.length){
+          i = 0;
+        }
+      }, 7000);
     }
 
-    function filter (){
+    function filterRoom (){
       var FilterValue, input, board, li, i;
       input = document.getElementById("search");
       FilterValue = input.value.toUpperCase();
