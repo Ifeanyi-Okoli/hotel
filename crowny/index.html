@@ -11,20 +11,27 @@
       href="https://fonts.googleapis.com/css?family=Sofia"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/d2c72d916d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/d2c72d916d.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
-      *{
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Popins", sans-serif;
-    }
-    .container{
+      }
+      .container {
         height: 100vh;
-        background-image: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)), url(./assets/bg1.jpeg);
-    }
+        background-image: linear-gradient(
+            rgba(0, 0, 50, 0.5),
+            rgba(0, 0, 50, 0.5)
+          ),
+          url(./assets/bg1.jpeg);
+      }
 
-    .form-box{
+      .form-box {
         width: 90%;
         max-width: 450px;
         top: 50%;
@@ -34,18 +41,18 @@
         background: #fff;
         padding: 50px 60px 70px;
         border-radius: 10px;
-        box-shadow: 0 15px 25px rgba(0,0,0,0.5);
-    }
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+      }
 
-    .form-box h1{
+      .form-box h1 {
         font-size: 30px;
         font-weight: 600;
         margin-bottom: 60px;
         color: #3c00a0;
         position: relative;
-    }
+      }
 
-    .form-box h1::after{
+      .form-box h1::after {
         content: "";
         position: absolute;
         width: 30px;
@@ -55,17 +62,17 @@
         bottom: -12px;
         left: 50%;
         transform: translateX(-50%);
-    }
+      }
 
-    .form-box .input-group{
+      .form-box .input-group {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         margin-bottom: 30px;
-    }
+      }
 
-    .form-box .input-group .input-field{
+      .form-box .input-group .input-field {
         background: #eaeaea;
         margin: 15px 0;
         border-radius: 3px;
@@ -74,10 +81,10 @@
         height: 50px;
         margin-bottom: 20px;
         align-items: center;
-    }
+      }
 
-    input{
-        width: 100%;          
+      input {
+        width: 100%;
         border: 0;
         outline: 0;
         background: transparent;
@@ -86,9 +93,8 @@
         color: #3c00a0;
         font-weight: 500;
         border-radius: 3px;
-       
-    }
-    .input-field{
+      }
+      .input-field {
         background: #eaeaea;
         margin: 15px 0;
         border-radius: 3px;
@@ -97,51 +103,51 @@
         max-height: 65px;
         transition: max-height 0.5s;
         overflow: hidden;
-    }
-    .input-field i{
+      }
+      .input-field i {
         font-size: 20px;
         color: #999;
         margin-left: 15px;
-    }
+      }
 
-    form p{
+      form p {
         font-size: 14px;
         color: #999;
         margin-bottom: 10px;
         text-align: left;
-    }
+      }
 
-    form p a{
+      form p a {
         color: #3c00a0;
         text-decoration: none;
-    }
+      }
 
-    .btn-field{
+      .btn-field {
         width: 100%;
         display: flex;
         justify-content: space-between;
-    }
+      }
 
-    .btn-field button{
+      .btn-field button {
         flex-basis: 48%;
         background: #3c00a0;
-        color:#fff;
-        height:40px;
+        color: #fff;
+        height: 40px;
         border-radius: 20px;
         border: 0;
         outline: 0;
         cursor: pointer;
         transition: background 1s;
-    }
+      }
 
-    .input-group{
+      .input-group {
         height: 280px;
-    }
+      }
 
-    .btn-field button.disable{
+      .btn-field button.disable {
         background: #eaeaea;
-        color:#555;
-    }
+        color: #555;
+      }
 
       #form {
         width: 200px;
@@ -155,7 +161,7 @@
     </style>
   </head>
   <body class="bg-slate-00 dark:bg-slate-900">
-    <div class="container max-w-screen-2xl relative ">
+    <div class="container max-w-screen-2xl relative">
       <!--Navigation starts here-->
       <nav class="bg-white shadow-lg">
         <div class="mx-auto">
@@ -176,7 +182,9 @@
 
             <div class="hidden md:flex flex space-x-4">
               <div class="hidden md:flex flex mt-2 pt-2">
-                <input onkeyup="filter()" id="search"
+                <input
+                  onkeyup="filter()"
+                  id="search"
                   type="search"
                   class="lg:w-96 sm:w-48 bg-gray-100 rounded-xl px-1 focus:outline-none h-3/4"
                   placeholder="search"
@@ -197,7 +205,8 @@
                 Sign Up
               </li>
               <li>
-                <button onclick="increaseRoom()"
+                <button
+                  onclick="increaseRoom()"
                   id="btnAdd"
                   class="flex justify-center items-center h-10 w-10 rounded-md bg-teal-500 p-5 text-4xl text-center p-auto"
                 >
@@ -258,14 +267,16 @@
           </li>
         </ul>
       </div>
-
-      <!-- Metrics -->
+  <!------------------------ Navigation Bar  ensd ---------------------------------------->
+      <!-- Metrics container starts ----------------------------------------- -->
       <div
         id="topMetric"
         class="hidden w-full h-20 flex justify-start bg-slate-500 p-5"
       ></div>
 
-      <!--Sidear-->
+  <!------------------------ Metrics Container ends ------------------------------------------>
+
+      <!-- -----------------------------Side bar starts---------------------------------- -->
       <div class="flex">
         <div
           class="z-20 flex-shrink-0 h-screen hidden w-64 overflow-y-auto bg-slate-800 md:block"
@@ -284,7 +295,8 @@
                 </h3>
                 <h4
                   class="text-white font-bold text-center border-2 border-white border-solid p-1 rounded-full w-1/2"
-                id="init">
+                  id="init"
+                >
                   XX
                 </h4>
               </div>
@@ -431,164 +443,176 @@
         </div>
         <!--Content-->
 
-        <div id="main" onmouseover=changeImage() class="bg-slate-200 h-screen w-full overflow-y-auto pt-8">
-          <div class="p-8" id="img">
-          </div>
+        <div
+          id="main"
+          onmouseover="changeImage()"
+          class="bg-slate-200 h-screen w-full overflow-y-auto pt-8"
+        >
+          <div class="p-8" id="img"></div>
+          <div
+            class="grid grid-cols-1 md:cols-2 lg:grid-cols-2 gap-4 lg:gap-8"
+            id="board"
+          >
             <div
-              class="grid grid-cols-1 md:cols-2 lg:grid-cols-2 gap-4 lg:gap-8"
-              id="board"
+              class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
             >
-              <div
-                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
-              >
-                <div class="w-3/5 flex justify-start">
-                  <!-- <div id="img">
+              <div class="w-3/5 flex justify-start">
+                <!-- <div id="img">
 
                             </div> -->
-                  <ul>
-                    <li class="font-bold text-gray-400">Todays Money</li>
-                    <li class="font-extrabold text-slate-800 text-xl">
-                      $53000
-                    </li>
-                    <li>
-                      <span class="text-green-400 font-bold">+34</span
-                      ><span class="text-gray-400">Since Yesterday</span>
-                    </li>
-                    <li>Todays Money</li>
-                  </ul>
-                </div>
-
-                <div class="w-2/5 flex justify-end">
-                  <div class="bg-indigo-500 rounded-full p-2">svg</div>
-                </div>
+                <ul>
+                  <li class="font-bold text-gray-400">Todays Money</li>
+                  <li class="font-extrabold text-slate-800 text-xl">$53000</li>
+                  <li>
+                    <span class="text-green-400 font-bold">+34</span
+                    ><span class="text-gray-400">Since Yesterday</span>
+                  </li>
+                  <li>Todays Money</li>
+                </ul>
               </div>
 
-              <div
-                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
-              >
-                <div class="w-3/5 flex justify-start">
-                  <ul>
-                    <li class="font-bold text-gray-400">Todays Money</li>
-                    <li class="font-extrabold text-slate-800 text-xl">
-                      $53000
-                    </li>
-                    <li>
-                      <span class="text-green-400 font-bold">+34</span
-                      ><span class="text-gray-400">Since Yesterday</span>
-                    </li>
-                    <li>Todays Money</li>
-                  </ul>
-                </div>
-
-                <div class="w-2/5 flex justify-end">
-                  <div class="bg-green-500 rounded-full p-2">svg</div>
-                </div>
-              </div>
-
-              <div
-                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
-              >
-                <div class="w-3/5 flex justify-start">
-                  <ul>
-                    <li class="font-bold text-gray-400">Todays Money</li>
-                    <li class="font-extrabold text-slate-800 text-xl">
-                      $53000
-                    </li>
-                    <li>
-                      <span class="text-green-400 font-bold">+34</span
-                      ><span class="text-gray-400">Since Yesterday</span>
-                    </li>
-                    <li>Todays Money</li>
-                  </ul>
-                </div>
-
-                <div class="w-2/5 flex justify-end">
-                  <div class="bg-rose-500 rounded-full p-2">svg</div>
-                </div>
-              </div>
-
-              <div
-                class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
-              >
-                <div class="w-3/5 flex justify-start">
-                  <ul>
-                    <li class="font-bold text-gray-400">Todays Money</li>
-                    <li class="font-extrabold text-slate-800 text-xl">
-                      $53000
-                    </li>
-                    <li>
-                      <span class="text-green-400 font-bold">+34</span
-                      ><span class="text-gray-400">Since Yesterday</span>
-                    </li>
-                    <li>Todays Money</li>
-                  </ul>
-                </div>
-
-                <div class="w-2/5 flex justify-end">
-                  <div class="bg-slate-500 rounded-full p-2">svg</div>
-                </div>
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-indigo-500 rounded-full p-2">svg</div>
               </div>
             </div>
-          
+
+            <div
+              class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <ul>
+                  <li class="font-bold text-gray-400">Todays Money</li>
+                  <li class="font-extrabold text-slate-800 text-xl">$53000</li>
+                  <li>
+                    <span class="text-green-400 font-bold">+34</span
+                    ><span class="text-gray-400">Since Yesterday</span>
+                  </li>
+                  <li>Todays Money</li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-green-500 rounded-full p-2">svg</div>
+              </div>
+            </div>
+
+            <div
+              class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <ul>
+                  <li class="font-bold text-gray-400">Todays Money</li>
+                  <li class="font-extrabold text-slate-800 text-xl">$53000</li>
+                  <li>
+                    <span class="text-green-400 font-bold">+34</span
+                    ><span class="text-gray-400">Since Yesterday</span>
+                  </li>
+                  <li>Todays Money</li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-rose-500 rounded-full p-2">svg</div>
+              </div>
+            </div>
+
+            <div
+              class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <ul>
+                  <li class="font-bold text-gray-400">Todays Money</li>
+                  <li class="font-extrabold text-slate-800 text-xl">$53000</li>
+                  <li>
+                    <span class="text-green-400 font-bold">+34</span
+                    ><span class="text-gray-400">Since Yesterday</span>
+                  </li>
+                  <li>Todays Money</li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-slate-500 rounded-full p-2">svg</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Footer -->
+  <!------------------------ Side  bar ends---------------------------------------------------->
+
+      <!------------------------------- Footer starts.------------------------------------->
 
       <div class="pt-5 flex justify-center">
         <p class="text-gray-400">Designed by IFEANYI OKOLI</p>
       </div>
-   
-    <!-- Creating the form for getting user input to create or add rooms to the list of rooms -->
+
+  <!-- ---------------------- Footer ends----------------------------------------------------------- -->
+
+      <!-- Creating the form for getting user input to create or add rooms to the list of rooms -->
       <form
         id="form"
         class="transition-all translate-y-10 duration-300 top-14 border-2 absolute hidden p-5 w-80 bg-slate-100 z-20 border-red-500"
       >
-      <!-- Room name field -->
-        <div class="w-full mx-5 p-5">
-          <label for="title" class="text-lg">Room Name</label>
+        <!-- Room name field -->
+        <div class="w-full mx-5 py-5 pl-0">
+          <label for="title" class="text-lg text-left">Room Name</label>
           <input
-            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            class="text-md flex justify-start font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
             name="title"
             placeholder="Room Name"
           />
         </div>
-<!-- Room type Field -->
-        <div class="w-full mx-5 p-5">
+        <!-- Room type Field -->
+        <div class="w-full mx-5 py-5">
           <label for="title" class="text-lg">Room Type</label>
           <input
-            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
             name="type"
             placeholder="Room Type"
           />
         </div>
-<!-- Price field -->
+        <!-- Price field -->
         <div class="w-full mx-5 p-5">
           <label for="title" class="text-lg">Price</label>
           <input
-            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
             name="price"
             placeholder="$"
           />
         </div>
-<!-- Description field -->
+        <!-- Description field -->
         <div>
           <label for="title">Description</label>
           <input
-            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
             name="desc"
             placeholder="Description"
           />
         </div>
-<!-- Booked status field -->
+
+        <!-- Image field -->
+        <div>
+          <label for="title">Image</label>
+          <input
+            id="imgInput"
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="file"
+            name="image"
+            placeholder="select image file"
+          />
+        </div>
+
+        <!-- Booked status field -->
         <div>
           <label for="title">Booked</label>
           <input
@@ -601,7 +625,7 @@
         <div>
           <label for="title">Due Date</label>
           <input
-            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-slate-800"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-slate-800"
             type="date"
             name="date"
           />
@@ -610,154 +634,106 @@
         <div class="w-full mx-5 p-5">
           <input
             id="formAdd"
-            class="rounded-xl p-5 border-2 border-blue-500"
+            class="rounded-xl p-2 text-center text-white font-bold border-2 border-solid border-blue-500 bg-green-500"
             type="submit"
             name="title"
-            value="create room"
+            value="Create Room"
           />
         </div>
       </form>
 
+        <!---------------------------- Form creation ends---------------------------------------->
+
       <!-- Creating the metrics panel for available, booked and total rooms -->
-    <section id="topMetricBar" class="grid gap-0 space-x-0 justify-items-center items-center text-start hidden w-full ml-0 pl-20 absolute top-20 mb-4">
-      <div class="flex inline-flex w-3/4  justify-center ml-0 pl-2">
-        <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
-          <p id="totalNumber" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">Total Rooms</p>
-          <p id="total" class=" bg-teal-600 rounded-2xl p-2">00</p>
+      <section
+        id="topMetricBar"
+        class="grid gap-0 space-x-0 justify-items-center items-center text-start hidden w-full ml-0 pl-20 absolute top-20 mb-4"
+      >
+        <div class="flex inline-flex w-3/4 justify-center ml-0 pl-2">
+          <div
+            class="flex justify between text-white font-extrabold text-xl p-2 w-1/2"
+          >
+            <p id="totalNumber" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">
+              Total Rooms
+            </p>
+            <p id="total" class="bg-teal-600 rounded-2xl p-2">00</p>
+          </div>
+          <div
+            class="flex justify between text-white font-extrabold text-xl p-2 w-1/2"
+          >
+            <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">
+              Available Rooms
+            </p>
+            <p id="availableRooms" class="bg-purple-600 rounded-2xl p-2">00</p>
+          </div>
+          <div
+            class="flex justify between text-white font-extrabold text-xl p-2 w-1/2"
+          >
+            <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">
+              Booked Rooms
+            </p>
+            <p id="bookedRooms" class="bg-green-600 rounded-2xl p-2">00</p>
+          </div>
         </div>
-        <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
-          <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">Available Rooms</p>
-          <p id="availableRooms" class=" bg-red-600 rounded-2xl p-2">00</p>
-        </div>
-        <div class="flex justify between text-white font-extrabold text-xl p-2 w-1/2">
-          <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">Booked Rooms</p>
-          <p id="bookedRooms" class=" bg-green-600 rounded-2xl p-2">00</p>
-        </div>
+      </section>
+
+        <!------------------------ Metrics Panel ends------------------------------------------------->
+      
+      <div>
+        <time datetime=""></time>
       </div>
-    </section>
 
-    <!-- Log in page -->
-
-   
     </div>
 
-    <div class="container max-w-screen-2xl h-screen bg-center bg-cover flex justify-center items-center absolute bg-[url(./assets/bg2.jpeg)] top-0 bottom-0 left-0 right-0 z-20" id="login" >
-      <img src="#" alt="" class="w-full h-full flex" id="imgLogin">
+    <!--------------------------------- Log in page start --------------------------- -->
+
+    <div
+      class="container max-w-screen-2xl h-screen bg-center bg-cover flex justify-center items-center absolute bg-[url(./assets/bg2.jpeg)] top-0 bottom-0 left-0 right-0 z-20"
+      id="login"
+    >
+      <img src="#" alt="" class="w-full h-full flex" id="imgLogin" />
       <div class="form-box -pt-8 absolute text-center z-40">
-          <h1 id="title">Sign Up</h1>
-          <form class="-mt-6 -pt-4">
-              <div class="input-group">
-                  <div class="input-field space-x-4" id="nameField">
-                      <i class="fa-solid fa-user"></i>
-                      <input type="text" placeholder="Name" id="name" required>
-                  </div>
-                  
-                  <div class="input-field space-x-4">
-                      <i class="fa-solid fa-envelope"></i>
-                      <input type="email" placeholder="surname.firstname@crowny.com" id="email">
-                  </div>
-                  
-                  <div class="input-field space-x-4">
-                      <i class="fa-solid fa-lock"></i>
-                      <input type="password" placeholder="Password">
-                  </div>
-                  <p>Lost Password <a href="#">Click Here</a></p>
-              </div>
-              
-              <div class="btn-field -pt-2">
-                  <button type="button" id="signupbtn">Sign Up</button>
-                  <button type="button" class="disable" id="signinbtn">Sign In</button>
-              </div>
-          </form>
+        <h1 id="title">Sign Up</h1>
+        <form class="-mt-6 -pt-4">
+          <div class="input-group">
+            <div class="input-field space-x-4" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Name" id="name" required />
+            </div>
+<!-- div for email field -->
+            <div class="input-field space-x-4">
+              <i class="fa-solid fa-envelope"></i>
+              <input
+                type="email"
+                placeholder="surname.firstname@crowny.com"
+                id="email"
+              />
+            </div>
+<!-- div for password field -->
+            <div class="input-field space-x-4">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <p>Lost Password <a href="#">Click Here</a></p>
+          </div>
+<!-- div for sign In button -->
+          <div class="btn-field -pt-2">
+            <button type="button" id="signupbtn">Sign Up</button>
+            <button type="button" class="disable" id="signinbtn">
+              Sign In
+            </button>
+          </div>
+        </form>
       </div>
-  </div>
+    </div>
+    <!--------------------------------- Log in page end --------------------------- -->
 
-    <!-- JavaScript  -->
-    <script>
-      const btn = document.querySelector("button.mobile-menu-button");
-      const menu = document.querySelector(".mobile-menu");
-      var main = document.getElementById("main");
-      var bgImage = ["./assets/bg1.jpeg", "./assets/bg2.jpeg", "./assets/bg3.jpeg", "./assets/bg4.jpeg", "./assets/bg5.jpeg"];
-
-      function changeImage(){
-        let displayImg = document.getElementById("main");
-        
-        if(displayImg.src.match("./assets/bg1.jpeg")){
-            document.getElementById("img1").src = "./assets/bg2.jpeg";
-        }
-        else{
-            document.getElementById("img1").src = "./assets/bg1.jpeg";
-        }
-    }
-
-
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
-
-      let signUpBtn = document.getElementById("signupbtn"); //from line #
-      let signInBtn = document.getElementById("signinbtn");
-      let nameField = document.getElementById("nameField");
-      let title = document.getElementById("title");
-      let name = document.getElementById("name");
-      let email = document.getElementById("email");
-      let login = document.getElementById("login");
-      let init = document.getElementById("init");
-
-
-      signInBtn.onclick = function(){         
-          nameField.style.maxHeight = "0";
-          title.innerHTML = "Sign In";
-          signUpBtn.classList.add("disable");
-          signInBtn.classList.remove("disable");
-      }
-
-      signUpBtn.onclick = function(){
-          nameField.style.maxHeight = "60px";
-          title.innerHTML = "Sign Up";
-          signUpBtn.classList.remove("disable");
-          signInBtn.classList.add("disable");
-      }
-
-      signInBtn.ondblclick = function(){      
-        if(email){
-          alert("you are signed in!");
-          login.style.maxHeight = "0";
-          login.classList.toggle("hidden")
-          init.innerText = ((email.value).match(/\b(\w)/g)).splice(0,2).join(" ").toUpperCase();
-        }           
-    }
-let bgImage2 = ["./assets/bg1.jpeg", "./assets/bg2.jpeg", "./assets/bg3.jpeg", "./assets/bg4.jpeg", "./assets/bg5.jpeg", "./assets/bg6.jpeg", "./assets/bg7.jpg", "./assets/bg8.jpg", "./assets/bg9.jpg", "./assets/bg10.jpeg"];
-
-let displayImg = document.getElementById("imgLogin");
-    displayImg.onmouseover = function (){
-      
-      let i = 0;
-      setInterval(function(){
-        displayImg.src = bgImage2[i];
-        i++;
-        if(i == bgImage2.length){
-          i = 0;
-        }
-      }, 7000);
-    }
-
-    function filterRoom (){
-      var FilterValue, input, board, li, i;
-      input = document.getElementById("search");
-      FilterValue = input.value.toUpperCase();
-      board = document.getElementById("board");
-      li = document.getElementsByTagName("li");
-      for (i=0; i <li.length; i++){
-        let a = li[i];
-        if(a.innerHTML.toUpperCase().indexOf(FilterValue) > -1){
-          li[i].style.display = "";
-        }else{
-          li[i].style.display = "none";
-        }
-      }
-    }
-    </script>
+    <!------------------------ JavaScript  link start-------------------------------->
+    <script src=""></script>
+    <script src="./login.js"></script>
+    <script src="./search.js"></script>
     <script src="./main.js"></script>
+
+      <!------------------------ JavaScript  link end------------------------------ -->
   </body>
 </html>

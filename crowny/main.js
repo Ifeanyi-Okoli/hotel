@@ -112,10 +112,12 @@ formAdd.addEventListener("click", (e)=>{
     var date = data.get("date"); //get the value of the date field.
     var type = data.get("type"); //get the value of the type field
     var price = data.get("price"); // get the value for the price field
+    var imgInput = data.get("imgInput"); // get the value for the price field
 
     //condition to check if the form has values in the title and desc fields
     if(title && date){
-        var room = {name: title, type: type, price: price, desc: desc, booked:complete(booked), dueDate:date }
+        var room = {name: title, type: type, price: price, desc: desc, booked:complete(booked), image:imgInput, dueDate:date }
+
         rooms.push(room); // adds the object room to the rooms array.
         form.classList.replace("border-red-500", "border-slate-200") //replaces the border color of the form to slate color
     }else{
@@ -158,7 +160,6 @@ const showMetricBar=()=>{
 const createRoom = (rooms) => {
   for (let room of rooms) {
     const roomDiv = document.createElement("div");
-    // roomDiv.classList.add("room");
     roomDiv.className =
       "bg-white shadow-md flex items-center rounded-xl p-4 h-40";
     // roomDiv.innerHTML = `room.name`;
@@ -166,6 +167,8 @@ const createRoom = (rooms) => {
     const subDiv = document.createElement("div");
     subDiv.className = "w-auto flex justify-start";
 
+
+//-----------------------------display image start -----------------------------------------------------------
     const imgDiv = document.createElement("div");
     imgDiv.className = "w-3/5 flex justify-start";
 
@@ -187,12 +190,27 @@ const createRoom = (rooms) => {
         await delayImage(1000);
     }
   }
-    
+
+
+let displayImg = img;
+      displayImg.onmouseover = function () {
+        let i = 0;
+        setInterval(function () {
+          displayImg.src = room.image[i];
+          i++;
+          if (i == room.image.length) {
+            i = 0;
+          }
+        }, 5000);
+      };
+
+ 
     // img.src = room.image;
     document.body.appendChild(img);
 
-
     imgDiv.appendChild(img);
+
+ //---------------------------------------dislay image end----------------------------------------------------
 
     const closeBtn = document.createElement("button");
     closeBtn.innerText = "+";
@@ -255,6 +273,5 @@ const createRoom = (rooms) => {
 
 const increaseRoom = () =>{
     // e.preventDefault();
-    // form.className.replace("hidden", "block")
     form.style.display = form.style.display==="none" ? "block" : "none";
 }
