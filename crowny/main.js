@@ -211,7 +211,7 @@ let displayImg = img;
     imgDiv.appendChild(img);
 
  //---------------------------------------dislay image end----------------------------------------------------
-
+let arr= [];
     const closeBtn = document.createElement("button");
     closeBtn.innerText = "+";
     closeBtn.className = "text-center text-2xl text-slate-700";
@@ -222,19 +222,19 @@ let displayImg = img;
     const l1 = document.createElement("li");
     l1.className = "font-bold text-gray-400";
     l1.innerText = room.name;
-
+arr.push(l1)
     const l2 = document.createElement("li");
     l2.className = "font-bold text-slate-800 text-md";
     l2.innerText = room.price;
-
+    arr.push(l2)
     const l3 = document.createElement("li");
     l3.className = "font-bold text-slate-400 text-xl";
     l3.innerText = room.type;
-
+    arr.push(l3)
     const l4 = document.createElement("li");
     l4.className = "font-normal text-xs";
     l4.innerText = room.desc;
-
+    arr.push(l4)
     const bookDiv = document.createElement("div");
     bookDiv.className = "w-2/5 flex justify-end";
 
@@ -260,7 +260,16 @@ let displayImg = img;
     roomDiv.appendChild(bookDiv);
 
     board.appendChild(roomDiv);
-    
+    //----------------------------
+    // roomDiv.innerHTML = localStorage.getItem("value");
+    // arr.addEventListener("click", display)
+    // function display(){
+    //   localStorage = setItem('value', arr.value);
+    //   arr.innerHTML = localStorage.getItem("value");
+    // }
+
+
+    //-------------------------
   }
 };
 

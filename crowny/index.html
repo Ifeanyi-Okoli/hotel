@@ -308,14 +308,14 @@
         <!-- Welcome & initials container ends -->
  
  
-        <!-- Admin of Sidebar container starts -->
+       
           <div
             class="flex flex-col px-4 py-4 text-gray-400 text-md space-y-3 font-medium"
           >
             <a href="#" class="flex">
               <a href="#" class="uppercase text-gray-700">Demos</a>
 
-            <!-- ------------------------Admin of Sidebar container starts------------------------------- -->
+            <!-- ------------------------Storage of Sidebar container starts------------------------------- -->
               
               <div class="flex space-x-2">
                 <svg
@@ -333,8 +333,8 @@
                     d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
                   ></path>
                 </svg>
-                <a href="#" class="flex hover-text-gray-200 space-x-2 pt-1"
-                  >Admin</a
+                <a href="#" id="storageR" class="flex hover-text-gray-200 space-x-2 pt-1"
+                  >Storage Record</a
                 >
               </div>
           <!-- ------------------------Admin of Sidebar container ends------------------------------- -->
@@ -420,7 +420,7 @@
               <!-- ------------------------Booked of Sidebar container ends------------------------------- -->
 
 
-              <!-- ------------------------Staff of Sidebar container ends------------------------------- -->
+              <!-- ------------------------Delete of Sidebar container ends------------------------------- -->
               <div class="flex space-x-2">
                 <svg
                   class="w-6 h-6"
@@ -440,11 +440,11 @@
                 <a
                   href="#"
                   class="flex hover-text-gray-200 space-x-2 pt-0.5"
-                  id="staff"
-                  >Staff</a
+                  id="delete"
+                  >Delete Room</a
                 >
               </div>
-        <!-- ------------------------staff of Sidebar container ends------------------------------- -->
+        <!-- ------------------------Delete of Sidebar container ends------------------------------- -->
 
             </a>
 
@@ -582,7 +582,7 @@
         <!-- Room name field -->
         <div class="w-full mx-5 py-5 pl-0">
           <label for="title" class="text-lg text-left">Room Name</label>
-          <input
+          <input id="name2"
             class="text-md flex justify-start font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
@@ -593,7 +593,7 @@
         <!-- Room type Field -->
         <div class="w-full mx-5 py-5">
           <label for="title" class="text-lg">Room Type</label>
-          <input
+          <input id="type2"
             class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
@@ -604,7 +604,7 @@
         <!-- Price field -->
         <div class="w-full mx-5 p-5">
           <label for="title" class="text-lg">Price</label>
-          <input
+          <input id="price2"
             class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
@@ -615,7 +615,7 @@
         <!-- Description field -->
         <div>
           <label for="title">Description</label>
-          <input
+          <input id="desc2"
             class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
             maxlength="50"
             type="text"
@@ -640,7 +640,7 @@
         <!-- Booked status field -->
         <div>
           <label for="title">Booked</label>
-          <input
+          <input id="booked2"
             class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:none"
             type="checkbox"
             name="booked"
@@ -649,7 +649,7 @@
         <!-- Date Field -->
         <div>
           <label for="title">Due Date</label>
-          <input
+          <input id="date2"
             class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-slate-800"
             type="date"
             name="date"
@@ -710,7 +710,7 @@
         <img src="./assets/bg9.jpg" alt="" class="w-full   rounded-2xl" id="imgTimer">
         <p id="timer" class="absolute top-50 left-50 -translate-y-1/2 text-green-700 text-8xl font-bold left-20"></p>
         <div class="w-full absolute text-center mb-2 text-white font-bold  text-2xl top-52 ">
-          <p class="m-4 text-sm pt-6">TODAY'S QUOTE</p>
+          <p class="m-4 text-xl pt-6">CLICK ME IF I AM OBSTRUCTING YOUR VIEW</p>
           <h2 class="pt-6 text-2xl">Lost time is never found again!</h2>
         </div>
       </div>
@@ -762,12 +762,24 @@
     </div>
     <!--------------------------------- Log in page end --------------------------- -->
 
+  <!------------------------ Storage   start-------------------------------->
+
+<div id="storage2" class="container w-1/2 bg-center bg-cover flex justify-center items-center absolute bg-gray-200 top-24 bottom-0 left-60 right-0 z-20 hidden pl-14">
+  <h1 class="text-5xl font-extrabold text-center text-white">ROOM RECORDS</h1>
+  <div id="output" class="text-center text-xl text-white"></div>
+</div>
+
+
+
+
+ <!------------------------ Storage   end-------------------------------->
+
     <!------------------------ JavaScript  link start-------------------------------->
     <script src="./timer.js"></script>
     <script src="./login.js"></script>
     <script src="./search.js"></script>
     <script src="./main.js"></script>
-
+    <script src="./storage.js"></script>
       <!------------------------ JavaScript  link end------------------------------ -->
   </body>
 </html>
