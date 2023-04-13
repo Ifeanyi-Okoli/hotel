@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crowny Hotel</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialD"> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/d2c72d916d.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Popins", sans-serif;
+      }
+      .container {
+        height: 100vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 50, 0.5),
+            rgba(0, 0, 50, 0.5)
+          ),
+          url(./assets/bg1.jpeg);
+      }
+
+      .form-box {
+        width: 90%;
+        max-width: 450px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 500px;
+        background: #fff;
+        padding: 50px 60px 70px;
+        border-radius: 10px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .form-box h1 {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 60px;
+        color: #3c00a0;
+        position: relative;
+      }
+
+      .form-box h1::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        border-radius: 3px;
+        background: #3c00a0;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .form-box .input-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .form-box .input-group .input-field {
+        background: #eaeaea;
+        margin: 15px 0;
+        border-radius: 3px;
+        display: flex;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        align-items: center;
+      }
+
+      input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        padding: 18px 15 px;
+        font-size: 16px;
+        color: #3c00a0;
+        font-weight: 500;
+        border-radius: 3px;
+      }
+      .input-field {
+        background: #eaeaea;
+        margin: 15px 0;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        max-height: 65px;
+        transition: max-height 0.5s;
+        overflow: hidden;
+      }
+      .input-field i {
+        font-size: 20px;
+        color: #999;
+        margin-left: 15px;
+      }
+
+      form p {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
+      form p a {
+        color: #3c00a0;
+        text-decoration: none;
+      }
+
+      .btn-field {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-field button {
+        flex-basis: 48%;
+        background: #3c00a0;
+        color: #fff;
+        height: 40px;
+        border-radius: 20px;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        transition: background 1s;
+      }
+
+      .input-group {
+        height: 280px;
+      }
+
+      .btn-field button.disable {
+        background: #eaeaea;
+        color: #555;
+      }
+
+      #form {
+        width: 200px;
+        transform: translate(0, 300);
+        transition: 1s width ease-in-out;
+      }
+
+      #form:hover {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-00 dark:bg-slate-900">
+    <div class="container max-w-screen-2xl relative">
+      <!--Navigation starts here-->
+      <nav class="bg-white shadow-lg">
+        <div class="mx-auto">
+          <div class="flex justify-between py-2 px-4">
+            <div
+              class="flex items-center space-x-2 font-bold text-gray-500 text-4xl"
+            >
+              <img
+                class="w-16 h-16"
+                src="./assets/crown-removebg-preview.png"
+                alt="logo"
+              />
+              <p class="mt-4">
+                Crow<span class="text-red-600">ny</span
+                ><span class="text-gray-600 text-xl"> Dashboard</span>
+              </p>
+            </div>
+
+            <div class="hidden md:flex flex space-x-4">
+              <div class="hidden md:flex flex mt-2 pt-2">
+                <input
+                  onkeyup="filter()"
+                  id="search"
+                  type="search"
+                  class="lg:w-96 sm:w-48 bg-gray-100 rounded-xl px-1 focus:outline-none h-3/4"
+                  placeholder="search"
+                />
+              </div>
+            </div>
+
+            <ul
+              class="flex space-x-4 py-1 lg:text-sm font-bold text-slate-600 items-center"
+            >
+              <li>Features</li>
+              <li>Pricing</li>
+              <li>Sign In</li>
+              <li class="text-slate-500">or</li>
+              <li
+                class="text-white bg-green-400 py-1 px-2 rounded-md hover:bg-green-400"
+              >
+                Sign Up
+              </li>
+              <li>
+                <button
+                  onclick="increaseRoom()"
+                  id="btnAdd"
+                  class="flex justify-center items-center h-10 w-10 rounded-md bg-teal-500 p-5 text-4xl text-center p-auto"
+                >
+                  +
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!--Mobile view goes here..-->
+        <button
+          class="p-1 mr-5 ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple mobile-menu-button"
+          @click="toggleSideMenu"
+          aria-label="Menu"
+        >
+          >
+          <svg
+            class="h-6 w-6"
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+            ></path>
+          </svg>
+        </button>
+      </nav>
+
+      <div class="hidden mobile-menu">
+        <ul class="font-bold text-slate-600 items-center">
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Features
+          </li>
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Pricing
+          </li>
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Sign In
+          </li>
+          <li class="block text-md px-2 py-4 text-slate-400">or</li>
+          <li
+            class="block text-md px-2 py-4 hover:bg-green-500 transition duration-3"
+          >
+            Sign Up
+          </li>
+        </ul>
+      </div>
+  <!------------------------ Navigation Bar  ensd ---------------------------------------->
+      <!-- Metrics container starts ----------------------------------------- -->
+      <div
+        id="topMetric"
+        class="hidden w-full h-20 flex justify-start bg-slate-500 p-5"
+      ></div>
+
+  <!------------------------ Metrics Container ends ------------------------------------------>
+
+      <!-- -----------------------------Side bar starts---------------------------------- -->
+      <div class="flex">
+        <div
+          class="z-20 flex-shrink-0 h-screen hidden w-64 overflow-y-auto bg-slate-800 md:block"
+        >
+        <!-- Welcome & initials container starts -->
+          <div class="bg-slate-900 h-20 w-64 py-3 px-5">
+            <div class="flex space-x-4 bg-green-400 p-1 rounded-md h-12 w-12">
+              <img
+                src="./assets/ifeanyi1.jpg"
+                alt="room"
+                class="flex rounded-md"
+              />
+              
+              <div class="flex flex-col">
+                <h3 class="text-white font-bold uppercase text-base">
+                  Welcome
+                </h3>
+                <h4
+                  class="text-white font-bold text-center border-2 border-white border-solid p-1 rounded-full w-1/2"
+                  id="init"
+                >
+                  XX
+                </h4>
+              </div>
+            
+            </div>
+          </div>
+
+        <!-- Welcome & initials container ends -->
+ 
+ 
+       
+          <div
+            class="flex flex-col px-4 py-4 text-gray-400 text-md space-y-3 font-medium"
+          >
+            <a href="#" class="flex">
+              <a href="#" class="uppercase text-gray-700">Demos</a>
+
+            <!-- ------------------------Storage of Sidebar container starts------------------------------- -->
+              
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
+                  ></path>
+                </svg>
+                <a href="#" id="storageR" class="flex hover-text-gray-200 space-x-2 pt-1"
+                  >Storage Record</a
+                >
+              </div>
+          <!-- ------------------------Admin of Sidebar container ends------------------------------- -->
+
+
+          <!-- ------------------------Rooms of Sidebar container starts------------------------------- -->
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="rooms"
+                  >Rooms</a
+                >
+              </div>
+          <!-- ------------------------Rooms of Sidebar container starts------------------------------- -->
+            
+          <!-- ------------------------Available of Sidebar container ends------------------------------- -->
+          <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="available"
+                  >Available</a
+                >
+              </div>
+              <!-- ------------------------Available of Sidebar container ends------------------------------- -->
+
+
+              <!-- ------------------------Booked of Sidebar container starts------------------------------- -->
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="book"
+                  >Booked</a
+                >
+              </div>
+              <!-- ------------------------Booked of Sidebar container ends------------------------------- -->
+
+
+              <!-- ------------------------Delete of Sidebar container ends------------------------------- -->
+              <div class="flex space-x-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                  ></path>
+                </svg>
+                <a
+                  href="#"
+                  class="flex hover-text-gray-200 space-x-2 pt-0.5"
+                  id="delete"
+                  >Delete Room</a
+                >
+              </div>
+        <!-- ------------------------Delete of Sidebar container ends------------------------------- -->
+
+            </a>
+
+            <!-- <a href="#">Demos 2</a> -->
+
+            <a href="#" class="flex">
+              <a href="#" class="u]ercase text-gray-700">Demos</a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">Buttons</a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">Alerts</a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">
+                <span>Models</span>
+              </a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">
+                <span>Charts</span>
+              </a>
+              <a href="#" class="flex hover-text-gray-200 space-x-2">
+                <span>Forms</span>
+              </a>
+            </a>
+          </div>
+        </div>
+        <!--Content-->
+
+        <div
+          id="main"
+          onmouseover="changeImage()"
+          class="bg-slate-200 h-screen w-full overflow-y-auto pt-8"
+        >
+          <div class="p-8" id="img"></div>
+          <div
+            class="grid grid-cols-1 md:cols-2 lg:grid-cols-2 gap-4 lg:gap-8"
+            id="board"
+          >
+            <div
+              class="p-4 bg-transparent rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <!-- <div id="img">
+
+                            </div> -->
+                <ul>
+                  <li class="font-bold text-gray-400"></li>
+                  <li class="font-extrabold text-slate-800 text-xl"></li>
+                  <li>
+                    <span class="text-green-400 font-bold"></span
+                    ><span class="text-gray-400"></span>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-transparent rounded-full p-2"></div>
+              </div>
+            </div>
+
+            <div
+              class="p-4 bg-transparent rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <ul>
+                  <li class="font-bold text-gray-400"></li>
+                  <li class="font-extrabold text-slate-800 text-xl"></li>
+                  <li>
+                    <span class="text-green-400 font-bold"></span
+                    ><span class="text-gray-400"></span>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-transparent rounded-full p-2"></div>
+              </div>
+            </div>
+
+            <div
+              class="p-4 bg-transparent rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <ul>
+                  <li class="font-bold text-gray-400"></li>
+                  <li class="font-extrabold text-slate-800 text-xl"></li>
+                  <li>
+                    <span class="text-green-400 font-bold"></span
+                    ><span class="text-gray-400"></span>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-transparent rounded-full p-2"></div>
+              </div>
+            </div>
+
+            <div
+              class="p-4 bg-transparent rounded-lg flex items-center h-32 shadow-sm"
+            >
+              <div class="w-3/5 flex justify-start">
+                <ul>
+                  <li class="font-bold text-gray-400"></li>
+                  <li class="font-extrabold text-slate-800 text-xl"></li>
+                  <li>
+                    <span class="text-green-400 font-bold"></span
+                    ><span class="text-gray-400"></span>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+
+              <div class="w-2/5 flex justify-end">
+                <div class="bg-transparent rounded-full p-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!------------------------ Side  bar ends---------------------------------------------------->
+
+      <!------------------------------- Footer starts.------------------------------------->
+
+      <div class="pt-5 flex justify-center">
+        <p class="text-gray-400">Designed by IFEANYI OKOLI</p>
+      </div>
+
+  <!-- ---------------------- Footer ends----------------------------------------------------------- -->
+
+      <!-- Creating the form for getting user input to create or add rooms to the list of rooms -->
+      <form
+        id="form"
+        class="transition-all translate-y-10 duration-300 top-14 border-2 absolute hidden p-5 w-80 bg-slate-100 z-20 border-red-500"
+      >
+        <!-- Room name field -->
+        <div class="w-full mx-5 py-5 pl-0">
+          <label for="title" class="text-lg text-left">Room Name</label>
+          <input id="name2"
+            class="text-md flex justify-start font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="title"
+            placeholder="Room Name"
+          />
+        </div>
+        <!-- Room type Field -->
+        <div class="w-full mx-5 py-5">
+          <label for="title" class="text-lg">Room Type</label>
+          <input id="type2"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="type"
+            placeholder="Room Type"
+          />
+        </div>
+        <!-- Price field -->
+        <div class="w-full mx-5 p-5">
+          <label for="title" class="text-lg">Price</label>
+          <input id="price2"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="price"
+            placeholder="$"
+          />
+        </div>
+        <!-- Description field -->
+        <div>
+          <label for="title">Description</label>
+          <input id="desc2"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="text"
+            name="desc"
+            placeholder="Description"
+          />
+        </div>
+
+        <!-- Image field -->
+        <div>
+          <label for="title">Image</label>
+          <input
+            id="imgInput"
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:border-teal-400"
+            maxlength="50"
+            type="file"
+            name="image"
+            placeholder="select image file"
+          />
+        </div>
+
+        <!-- Booked status field -->
+        <div>
+          <label for="title">Booked</label>
+          <input id="booked2"
+            class="text-md font-light rounded-xl p-2 border-2 border-slate-500 w-full active:none"
+            type="checkbox"
+            name="booked"
+          />
+        </div>
+        <!-- Date Field -->
+        <div>
+          <label for="title">Due Date</label>
+          <input id="date2"
+            class="text-md font-light rounded-xl p-2 border-2 border-solid bg-white border-slate-500 w-full active:border-slate-800"
+            type="date"
+            name="date"
+          />
+        </div>
+        <!-- Submit element for the form -->
+        <div class="w-full mx-5 p-5">
+          <input
+            id="formAdd"
+            class="rounded-xl p-2 text-center text-white font-bold border-2 border-solid border-blue-500 bg-green-500"
+            type="submit"
+            name="title"
+            value="Create Room"
+          />
+        </div>
+      </form>
+
+        <!---------------------------- Form creation ends---------------------------------------->
+
+      <!-- Creating the metrics panel for available, booked and total rooms -->
+      <section
+        id="topMetricBar"
+        class="grid gap-0 space-x-0 justify-items-center items-center text-start hidden w-full ml-0 pl-20 absolute top-20 mb-4"
+      >
+        <div class="flex inline-flex w-3/4 justify-center ml-0 pl-2">
+          <div
+            class="flex justify between text-white font-extrabold text-xl p-2 w-1/2"
+          >
+            <p id="totalNumber" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">
+              Total Rooms
+            </p>
+            <p id="total" class="bg-teal-600 rounded-2xl p-2">00</p>
+          </div>
+          <div
+            class="flex justify between text-white font-extrabold text-xl p-2 w-1/2"
+          >
+            <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">
+              Available Rooms
+            </p>
+            <p id="availableRooms" class="bg-purple-600 rounded-2xl p-2">00</p>
+          </div>
+          <div
+            class="flex justify between text-white font-extrabold text-xl p-2 w-1/2"
+          >
+            <p id="" class="w-3/4 bg-slate-700 rounded-2xl p-2 pr-0">
+              Booked Rooms
+            </p>
+            <p id="bookedRooms" class="bg-green-600 rounded-2xl p-2">00</p>
+          </div>
+        </div>
+      </section>
+
+        <!------------------------ Metrics Panel ends------------------------------------------------->
+
+         <!------------------------ Timer Panel starts------------------------------------------------->
+      
+      <div id ="timePanel" class="container w-1/2 h-1/2 bg-transparent flex items-center justify-center absolute top-0 left-0 translate-x-1/2 translate-y-1/2">
+        <img src="./assets/bg9.jpg" alt="" class="w-full   rounded-2xl" id="imgTimer">
+        <p id="timer" class="absolute top-50 left-50 -translate-y-1/2 text-green-700 text-8xl font-bold left-20"></p>
+        <div class="w-full absolute text-center mb-2 text-white font-bold  text-2xl top-52 ">
+          <p class="m-4 text-xl pt-6">CLICK ME IF I AM OBSTRUCTING YOUR VIEW</p>
+          <h2 class="pt-6 text-2xl">Lost time is never found again!</h2>
+        </div>
+      </div>
+
+    </div>
+
+ <!------------------------ Timer Panel ends------------------------------------------------->
+
+    <!--------------------------------- Log in page start --------------------------- -->
+
+    <div
+      class="container max-w-screen-2xl h-screen bg-center bg-cover flex justify-center items-center absolute bg-[url(./assets/bg2.jpeg)] top-0 bottom-0 left-0 right-0 z-20"
+      id="login"
+    >
+      <img src="#" alt="" class="w-full h-full flex" id="imgLogin" />
+      <div class="form-box -pt-8 absolute text-center z-40">
+        <h1 id="title">Sign Up</h1>
+        <form class="-mt-6 -pt-4">
+          <div class="input-group">
+            <div class="input-field space-x-4" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Name" id="name" required />
+            </div>
+<!-- div for email field -->
+            <div class="input-field space-x-4">
+              <i class="fa-solid fa-envelope"></i>
+              <input
+                type="email"
+                placeholder="surname.firstname@crowny.com"
+                id="email"
+              />
+            </div>
+<!-- div for password field -->
+            <div class="input-field space-x-4">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <p>Lost Password <a href="#">Click Here</a></p>
+          </div>
+<!-- div for sign In button -->
+          <div class="btn-field -pt-2">
+            <button type="button" id="signupbtn">Sign Up</button>
+            <button type="button" class="disable" id="signinbtn">
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--------------------------------- Log in page end --------------------------- -->
+
+  <!------------------------ Storage   start-------------------------------->
+
+<div id="storage2" class="container w-1/2 bg-center bg-cover flex justify-center items-center absolute bg-gray-200 top-24 bottom-0 left-60 right-0 z-20 hidden pl-14">
+  <h1 class="text-5xl font-extrabold text-center text-white">ROOM RECORDS</h1>
+  <div id="output" class="text-center text-xl text-white"></div>
+</div>
+
+
+
+
+ <!------------------------ Storage   end-------------------------------->
+
+    <!------------------------ JavaScript  link start-------------------------------->
+    <script src="./timer.js"></script>
+    <script src="./login.js"></script>
+    <script src="./search.js"></script>
+    <script src="./main.js"></script>
+    <script src="./storage.js"></script>
+      <!------------------------ JavaScript  link end------------------------------ -->
+  </body>
+</html>
